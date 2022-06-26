@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+       
+  {% if user.is_authenticated %}
+  
+
+  <h2 > Turma </h2>
+
+  <div class="card">
+    <div class="card-header" style="background-color:  #A2D2FF;">
+        <strong> Principal</strong>
+      
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{principal_data}} &nbsp
+        <a href="#" class="btn btn-link text-start btn-sm " id="button_p" color="red" >Editar</a>
+      </h5>
+        <p class="card-text">
+         
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+
+      <a class="btn btn-outline-info" href="{% url 'add-conjunto' %}"
+      class="btn btn-outline-danger" >Adicionar Conjunto</a>
+
+    </div>
+</div>
+
+
+
+{% endif %}
+{% endblock %}
+

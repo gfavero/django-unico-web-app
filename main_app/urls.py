@@ -27,6 +27,7 @@ urlpatterns = [
     path('delete_base/<base_id>', views.delete_base_table, name='delete-base'),
     path('delete_sub_base/<sub_base_id>', views.delete_sub_base_table, name='delete-sub-base'),
     path('edit_conjunto/<conjunto_id>', views.edit_conjunto_table, name='edit-conjunto'),
+    path('turma', views.turma_content, name='turma'),
 
 ]
 

@@ -11,6 +11,10 @@ from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
 
+def turma_content(request):
+    content = {}
+    return render(request, 'turma_content.html', content)
+
 def edit_conjunto_table(request, conjunto_id):
     conjunto = Conjunto_table.objects.get(pk= conjunto_id)
     form = ConjuntoForm(request.POST or None, instance=conjunto)
