@@ -8,30 +8,80 @@
        
   {% if user.is_authenticated %}
   
-
+<br>
   <h2 > Turma </h2>
 
   <div class="card">
     <div class="card-header" style="background-color:  #A2D2FF;">
-        <strong> Principal</strong>
-      
+        <strong> Quem é sua turma?</strong>      
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{principal_data}} &nbsp
-        <a href="#" class="btn btn-link text-start btn-sm " id="button_p" color="red" >Editar</a>
-      </h5>
-        <p class="card-text">
+        <h5 class="card-title"></h5>
+            <ul>
+                <li><strong>Genero: &nbsp</strong></li>
+                <li><strong>Idade: &nbsp</strong></li>
+                <li><strong>Renda: &nbsp</strong></li>
+                <li><strong>Status: &nbsp</strong></li>
+                <li><strong>O que querem?</strong>
+                 (uma palavra ou frase): &nbsp
+                </li>
+
+            </ul>
          
         </p>
     </div>
     <div class="card-footer text-muted">
+      <!-- <a class="btn btn-outline-info" href="{% url 'add-conjunto' %}"
+      class="btn btn-outline-danger" >Adicionar Conjunto</a> -->
+    </div>
+</div>
+<br>
 
-      <a class="btn btn-outline-info" href="{% url 'add-conjunto' %}"
-      class="btn btn-outline-danger" >Adicionar Conjunto</a>
+<div class="card">
+    <div class="card-header" style="background-color:  #A2D2FF;">
+        <strong> PRR (problemas reais e rotineiros)</strong>      
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+            <ul>
+                <li><strong>Lista de problemas simples e diários: &nbsp</strong></li>
+                <li><strong>Em relação ao PRR, aprofunde e encontre gatilhos: &nbsp</strong></li>
+                <li><strong>Quando?: &nbsp</strong></li>
+                <li><strong>Como?: &nbsp</strong></li>
+                <li><strong>Onde?:&nbsp</strong></li>
+                <li><strong>O que?:&nbsp</strong></li>
+                <li><strong>Quem?:&nbsp</strong></li>
+                <li><strong>Por que?:&nbsp</strong></li>
+            </ul>
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+      <!-- <a class="btn btn-outline-info" href="{% url 'add-conjunto' %}"
+      class="btn btn-outline-danger" >Adicionar Conjunto</a> -->
 
     </div>
 </div>
+<br>
 
+<div class="card">
+    <div class="card-header" style="background-color:  #A2D2FF;">
+        <strong> Céu e Inferno</strong>      
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+            <ul>
+                <li><strong>Lista de pequenos e grandes sonhos: &nbsp</strong></li>
+                <li><strong>Lista stuck (desculpas e barreiras): &nbsp</strong></li>
+            </ul>
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+      <!-- <a class="btn btn-outline-info" href="{% url 'add-conjunto' %}"
+      class="btn btn-outline-danger" >Adicionar Conjunto</a> -->
+
+    </div>
+</div>
+<br>
 
 
 {% endif %}
