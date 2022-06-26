@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+<body>
+  <div
+  class="masthead"
+  style="background-image: url({% static 'images/lilla_bg.jpg' %});"
+   
+  >
+  <div class='container table-responsive'> 
+    <p> </p>
+    {% if user.is_authenticated %}
+   <h1> Home </h1>
+    <p> </p>
+    <h1> Oi {{user}} </h1>
+      <p> </p>
+    <h2>Voce esta logado.</h2>
+  </div>
+
+  </div>
+
+<div class='container table-responsive'>
+  
+  <!-- <body style="background-image: url({% static 'images\lilla_bg.jpg' %});"> -->
+ 
+
+
+    
+    {% else %}
+
+    <p2>
+      <a href={% url 'login' %} class="btn btn-secondary">Entrar</a>
+    </p2>
+    
+    {% endif %}
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+    <div class="shadow p-4 mb-5 bg-body rounded">
+
+        <h2>Criar Conteúdo</h2>
+
+        <form action="{% url 'process-in' %}" method="POST" id="create-content-id">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Assunto</label>
+                <input type="Text" class="form-control" name="ProjectName"  value= '{{ProjectName}}' placeholder="banco de assunto" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Referência</label>
+                <input type="link" class="form-control" name="Reference" value="" placeholder="Link"/>
+            </div>
+ 
+            <!-- <a href={% url 'process-in' %}  class="btn btn-secondary"  >Select</a> -->
+            <button  type="submit"  form="create-content-id" class="btn btn-secondary"  >Próximo</button>
+
+        </form>
+    </div>
+
+{% endblock %}

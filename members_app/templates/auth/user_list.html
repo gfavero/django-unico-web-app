@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    <div class="shadow p-4 mb-5 bg-body rounded">
+        <h3> Usuarios</h3> 
+        {% if user.profile.user_authorized %}
+            {% if user.is_authenticated %}  
+
+            <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Joined</th>
+                    <th scope="col">Last Login</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">User Authorized</th>                  
+                    <th scope="col">Edit</th>
+                    <!-- <th scope="col">Delete</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in all_users %}      
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <th >{{user.date_joined}}</th>
+                        <th >{{user.last_login}}</th>
+                        <td>{{ user.username}}</td>
+                        <td>{{ user.first_name}}</td>
+                        <td>{{ user.last_name}}</td>
+                        <td >{{ user.email }}</td>
+                        <td >{{ user.profile.user_authorized }}</td>  
+                        <!-- <td>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" value="true">
+                            </div>
+
+                        </td> -->
+
+                        <td><a href="{% url 'profile-edit' user.id %}" class="btn btn-outline-dark " >Edit</a></td>
+                        <!-- <td><a href="" class="btn btn-outline-danger" 
+                        onclick="return confirm('Tem certeza que deseja deletar esse conteúdo?')">Delete</a></td>
+                    </tr> -->
+
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p> Voce nao tem acesso pare ver esta pagina. </p>
+
+            {% endif %}
+
+
+        {% endif %}
+      </div>    
+
+{% endblock %}
+
+
+

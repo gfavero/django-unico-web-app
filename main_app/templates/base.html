@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <!-- icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <title>Unico</title>
+</head>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<body>
+    {% include 'navbar.html' %}
+
+
+    <div class='container table-responsive'>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong> {{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+   
+        {% block content %}
+        {{c.title|safe}}
+
+
+        {% endblock %}
+
+        {% if user.profile.user_authorized %}
+            {% if user.profile.user_authorized %}
+
+            {% else %}
+            <p> Recebemos o seu cadastro.</p>
+            <p> Aguarde seu acesso ser liberado por um dos administradores.</p>
+            
+            {% endif %}
+        {% endif %}
+       
+    </div>
+
+    {% include 'form_banco_de_assunto.html' %}
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="{% static 'main_js.js' %}"></script>  
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+
+
+
+</html>
+<VR /><BR />

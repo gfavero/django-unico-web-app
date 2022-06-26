@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if form.errors %}
+
+{% endif %}
+    <div class="shadow p-4 mb-5 bg-body rounded">
+        <h2>Adicionar Conjunto</h2>
+        <br></br>
+            <form action="" method="POST">
+            {% csrf_token %}
+                {{form.as_p}}
+                <br></br>
+            <input type="submit" value="Salvar" class="btn btn-secondary">
+        </form>
+     </div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+    <div class="shadow p-4 mb-5 bg-body rounded">
+
+        <h2>WHN</h2>
+
+        <form action="{% url 'process-totem' %}" method="POST" id="process-5w-id">
+            {% csrf_token %}
+
+            <div class="row g-3">
+           
+                {% for item in five_w_data %}  
+                <div class="col-12 col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="card ">
+                       <!-- <img src= "{{ item.five_w_image.url }}" alt="Matrix " class="card-img-top"/> -->
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="card-title">{{item}}</h4>
+                            <!-- <p class="card-text">Some quick example text to build on the card title.</p> -->
+                            <!-- <p class="card-text"><small class="text-muted">{{item.five_w_value}}</small></p>  -->
+                            <button  type="submit"  form="process-5w-id" class="btn btn-outline-success align-self-end btn btn-lg btn-block" 
+                                                                            style="margin-top: auto;" name = "content_five_w_key" value = "{{item}}|{{item.id}}">Select</button>
+                        </div>
+                    </div>
+                </div>
+            
+                {% endfor %}
+              
+         </div>
+         <p></p>
+                    <div class="shadow p-4 mb-5 bg-body rounded">
+                        <h5> Resumo selecionado:</h5>
+                        <div class="mb-3">
+                            <input class="form-control d-none" name="ProjectName"  value= "{{ProjectName}}">
+                            <input class="form-control d-none" name="Reference" value="{{Reference}}">
+                            <input class="form-control d-none" name="content_in" value="{{content_in}}">
+                            <input class="form-control d-none" name="content_in_key" value="{{content_in_key}}">
+                            <li>Assunto: "{{ProjectName}}" </li>
+                            <li>Reference: "{{Reference}}" </li>
+                            <li>In&sup3: "{{content_in}}" </li>
+                        </div>  
+                    </div>
+        </div>
+    </form>
+    </div>
+
+
+{% endblock %}
+

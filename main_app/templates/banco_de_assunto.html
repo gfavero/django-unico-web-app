@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+       
+  {% if user.is_authenticated %}
+  
+  {% endif %}
+  <h2 > Banco de  Assuntos </h2>
+  <p></p>
+ 
+  <div class="card">
+    <div class="card-header" style="background-color:  #CDB4DB;">
+        <strong> Principal</strong>
+      
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{principal_data}} &nbsp
+        <a href="#" class="btn btn-link text-start btn-sm " id="button_p" color="red" >Editar</a>
+      </h5>
+        <p class="card-text">
+         
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+
+      <a class="btn btn-outline-info" href="{% url 'add-conjunto' %}"
+      class="btn btn-outline-danger" >Adicionar Conjunto</a>
+
+    </div>
+</div>
+<br/><br/>
+<!-- ****************************** -->
+
+  {% for item in conjunto_data %}  
+
+  <div class="shadow p-4 mb-5 bg-body rounded">
+            <div class="card">
+              <div class="card-header" style="background-color: #FFAFCC;">
+                <div class="row">
+                  <div class="col-sm-8">Conjunto {{forloop.counter}}:  <strong>{{item.content_conjunto}}</strong> </div>
+                  <div class="col-sm-4 d-flex justify-content-end" >
+                    <p></p>
+                      <div class="d-grid gap-2 d-md-block">
+                        <a href="{% url 'edit-conjunto' item.id %}" class="btn btn-outline-dark">Editar</a>
+                        <a href="{% url 'delete-conjunto' item.id %}" class="btn btn-outline-danger"  
+                            onclick="return confirm('Tem certeza que deseja deletar esse conjunto?')">Apagar</a>
+                      </div>
+                  </div>
+              </div>
+            </div>
+              <div class="card-body">
+                  <p class="card-text">
+
+<!-- ****************************** -->
+
+              <form action="">
+                 <div class="row g-3">
+                 {% for base in base_data %}                  
+                    {% if item.id == base.content_conjunto.id  %} 
+                    <div class="col-12 col-md-6 col-lg-3 d-flex align-items-stretch">
+                      <div class="shadow p-4 mb-5 bg-body rounded">
+                                    <div class="card">
+                                      <div class="card-header" style="background-color: #A2D2FF;">
+                                          Base:&nbsp<strong>{{base}}&nbsp</strong>
+                                          
+                                              <a href="{% url 'delete-base' base.id %}" 
+                                              onclick="return confirm('Tem certeza que deseja deletar esse base {{base}}?')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                </svg>
+                                              </a>
+                                      </div>
+                                      <div class="card-body">
+                                          <p class="card-text">
+                                              <ul>
+                                                  {% for sub_base in sub_base_data %}   
+                                                  {% if sub_base.content_base.id == base.id  %}
+                                                  <li>
+                                                      <form action="{% url 'create-contents' %}" method='POST' id='sub-base-id'>
+                                                          <button href="{% url 'create-contents' %}" type="submit"
+                                                            name="ProjectName"  value= "{{sub_base}}" form="sub-base-id" class="btn btn-link text-start" >{{sub_base}}&nbsp
+                                                          </button>
+                                                      </form>   
+                                                        <a href="{% url 'delete-sub-base' sub_base.id %}" 
+                                                        onclick="return confirm('Tem certeza que deseja deletar esse sub base {{sub_base}}?')">
+                                                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                          </svg>
+                                                      </a>    
+                                                  </li> 
+                                                           
+                                                   {% endif %}
+                                                {% endfor %}
+                                                
+                                              </ul>
+                                          </p>
+                                      </div>
+                                      <div class="card-footer text-muted">
+                                          <a  class="btn btn-outline-info" href="{% url 'add-sub-base' base.id %}"
+                                                                      class="btn btn-outline-danger " >Adicionar Sub base</a>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+  
+<!-- ****************************** -->
+                
+                    {% endif %}
+                 {% endfor %}
+                </div>
+              </form>
+
+            </p>
+          </div>
+          <div class="card-footer text-muted">
+            <a class="btn btn-outline-info" href="{% url 'add-base' item.id %}" class="btn btn-outline-danger" >Adicionar Base</a>
+        
+          </div>
+      </div>
+
+
+  </div> 
+  {% endfor %}
+
+{% endblock %}
+

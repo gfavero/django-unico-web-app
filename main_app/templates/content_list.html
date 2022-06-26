@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+	
+<h1>Lista de conteudos</h1>
+
+<br/>
+	
+{% if user.is_authenticated %}  
+
+    {% for item in process_data %}     
+<div class="card">
+    <div class="card-header">
+        
+        Data: {{ item.content_creation_date}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Assunto: {{ item.content_subject }}</h5>
+        <p class="card-text">
+            <ul>
+               
+                <li>Headline: {{ item.content_comment_01 }} </li>
+                <li>Texto: {{ item.content_comment_02 }} </li>
+                <li>CTA: {{ item.content_comment_03 }} </li>
+                <li>Referência: <a href="{{ item.content_reference }}" target="_blank" > {{ item.content_reference }}</a> </li>
+            
+            </ul>
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+        <a href="{% url 'update-content' item.id %}" class="btn btn-outline-dark " >Editar</a>
+        <a href="{% url 'delete-content' item.id %}" class="btn btn-outline-danger" 
+        onclick="return confirm('Tem certeza que deseja deletar esse conteúdo?')">Deletar</a>
+    </div>
+</div>
+<br/><br/>
+{% endfor %}
+
+{% endif %}
+
+{% endblock %}
+
+

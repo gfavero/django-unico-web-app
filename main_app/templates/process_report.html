@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+    <div class="shadow p-4 mb-5 bg-body rounded">
+        <h3> Histórico</h3> 
+        {% if user.is_authenticated %}  
+
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Assunto</th>
+                  <th scope="col">PdA</th>
+                  <th scope="col">WHN</th>
+                  <th scope="col">Tópico</th>
+                  <th scope="col">Tema</th>
+                  <th scope="col">Headline</th>
+                  <th scope="col">Texto</th>
+                  <th scope="col">CTA</th>
+                  <th scope="col">Referência</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in process_data %}      
+                  <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{ item.content_creation_date}}</td>
+                    <td >{{ item.content_subject }}</td>
+                    <td>{{ item.content_in }}</td>
+                    <td>{{ item.content_five_w }}</td>
+                    <td>{{ item.content_totem }}</td>
+                    <td>{{ item.content_theme }}</td>
+                    <td>{{ item.content_comment_01 }}</td>
+                    <td>{{ item.content_comment_02 }}</td>
+                    <td>{{ item.content_comment_03 }}</td>            
+                    <td class="td-1"> <a href="{{ item.content_reference }}" target="_blank" > {{ item.content_reference }}</a>  </td>     
+                    <td>{{ item.content_status }}</td>  
+                    <td><a href="{% url 'update-content' item.id %}" class="btn btn-outline-dark " >Edit</a></td>
+                    <td><a href="{% url 'delete-content' item.id %}" class="btn btn-outline-danger" 
+                      onclick="return confirm('Tem certeza que deseja deletar esse conteúdo?')">Delete</a></td>
+                  </tr>
+
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+            {% else %}
+            <p> Voce nao tem acesso pare ver esta pagina. </p>
+
+        {% endif %}
+      </div>    
+
+{% endblock %}
+
+
+
+
+

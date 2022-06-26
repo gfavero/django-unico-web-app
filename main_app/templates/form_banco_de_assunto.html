@@ -1,0 +1,15 @@
+
+
+    <div class="bg-modal">
+      <div class="model-content">
+        <div class="close">+</div>
+        <form action="" method="POST">
+          <h3>Principal</h3>  
+          <p></p>          
+              {% csrf_token %}
+                  {{form.as_p}}
+           <input type="submit" value="Salvar" class="btn btn-secondary" id="btn1" >
+        </form>
+      </div>
+    </div>
+
