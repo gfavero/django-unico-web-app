@@ -7,9 +7,19 @@
 
        
   {% if user.is_authenticated %}
-  
-<br>
-  <h2 > Turma </h2>
+
+  <h2>Turma</h2>
+  <br>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="row g-3">
+        <div class="col-auto">
+            <strong>Sua turma tem um nome?</strong>
+        </div>
+        <div class="col-auto">
+           <h2> <input type="Text" class="form-control form-control-sm"  name="turma_name" value="{{turma_data.turma_name}}"></h2>
+        </div>    
+    </div>
 
   <div class="card">
     <div class="card-header" style="background-color:  #A2D2FF;">
@@ -17,17 +27,52 @@
     </div>
     <div class="card-body">
         <h5 class="card-title"></h5>
-            <ul>
-                <li><strong>Genero: &nbsp</strong></li>
-                <li><strong>Idade: &nbsp</strong></li>
-                <li><strong>Renda: &nbsp</strong></li>
-                <li><strong>Status: &nbsp</strong></li>
-                <li><strong>O que querem?</strong>
-                 (uma palavra ou frase): &nbsp
+        <ul style="list-style: none;">
+                <li class="row g-3">
+                    <div class="col-auto ">
+                        <strong>Genero &nbsp</strong>
+                    </div>
+                    <div class="col-auto">
+                        <input type="Text" class="form-control form-control-sm"  name="turma_genero" value="{{turma_data.turma_genero}}">
+                    </div> 
                 </li>
-
+                <br>
+                <li class="row g-3">
+                    <div class="col-auto">
+                        <strong>Idade &nbsp</strong>
+                    </div>
+                    <div class="col-auto">
+                        <input type="Text" class="form-control form-control-sm"  name="turma_idade" value="{{turma_data.turma_idade}}">
+                    </div> 
+                </li>
+                <br>
+                <li class="row g-3">
+                    <div class="col-auto">
+                        <strong>Renda &nbsp</strong>
+                    </div>
+                    <div class="col-auto">
+                        <input type="Text" class="form-control form-control-sm" name="turma_renda" value="{{turma_data.turma_renda}}">
+                    </div> 
+                </li>
+                <br>
+                <li class="row g-3">
+                    <div class="col-auto">
+                        <strong>Status &nbsp</strong>
+                    </div>
+                    <div class="col-auto">
+                        <input type="Text" class="form-control form-control-sm"  name="turma_status" value="{{turma_data.turma_status}}">
+                    </div> 
+                </li>
+                <br>
+                <li class="row g-3">
+                    <div class="col-auto">
+                        <strong>O que querem? &nbsp</strong> (uma palavra ou frase) &nbsp
+                    </div>
+                    <div class="col-auto">
+                        <input type="Text" class="form-control form-control-sm"  name="turma_o_que_querem" value="{{turma_data.turma_o_que_querem}}">
+                    </div> 
+                </li>
             </ul>
-         
         </p>
     </div>
     <div class="card-footer text-muted">
@@ -39,19 +84,35 @@
 
 <div class="card">
     <div class="card-header" style="background-color:  #A2D2FF;">
-        <strong> PRR (problemas reais e rotineiros)</strong>      
+        <strong> PRR </strong>  (Problemas Reais e Rotineiros)
     </div>
     <div class="card-body">
         <h5 class="card-title"></h5>
-            <ul>
-                <li><strong>Lista de problemas simples e diários: &nbsp</strong></li>
-                <li><strong>Em relação ao PRR, aprofunde e encontre gatilhos: &nbsp</strong></li>
-                <li><strong>Quando?: &nbsp</strong></li>
-                <li><strong>Como?: &nbsp</strong></li>
-                <li><strong>Onde?:&nbsp</strong></li>
-                <li><strong>O que?:&nbsp</strong></li>
-                <li><strong>Quem?:&nbsp</strong></li>
-                <li><strong>Por que?:&nbsp</strong></li>
+            <ul style="list-style: none;">
+                <li><strong>Lista de problemas simples e diários &nbsp</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_lista_de_problemas" >{{turma_data.turma_lista_de_problemas}}</textarea>
+                </li>
+                <li><strong>Em relação ao PRR, aprofunde e encontre gatilhos:</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_em_relacao_ao_PRR" >{{turma_data.turma_em_relacao_ao_PRR}}</textarea>
+                </li>
+                <li><strong>Quando?</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_quando" >{{turma_data.turma_quando}}</textarea>
+                </li>
+                <li><strong>Como?</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_como" >{{turma_data.turma_como}}</textarea>
+                </li>
+                <li><strong>Onde?</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_onde" >{{turma_data.turma_onde}}</textarea>
+                </li>
+                <li><strong>O que?</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_o_que" >{{turma_data.turma_o_que}}</textarea>
+                </li>
+                <li><strong>Quem?</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_quem" >{{turma_data.turma_quem}}</textarea>
+                </li>
+                <li><strong>Por que?</strong>
+                    <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_por_que" >{{turma_data.turma_por_que}}</textarea>
+                </li>
             </ul>
         </p>
     </div>
@@ -69,10 +130,14 @@
     </div>
     <div class="card-body">
         <h5 class="card-title"></h5>
-            <ul>
-                <li><strong>Lista de pequenos e grandes sonhos: &nbsp</strong></li>
-                <li><strong>Lista stuck (desculpas e barreiras): &nbsp</strong></li>
-            </ul>
+        <ul style="list-style: none;">
+            <li><strong>Dream’s List</strong>&nbsp Pequenos e grandes sonhos.
+                <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_dreams_list" >{{turma_data.turma_dreams_list}}</textarea>
+            </li>
+            <li><strong>Stuck’s List</strong>&nbsp Desculpas e barreiras 
+                <textarea  type="Text" class="form-control form-control-sm" rows="1" name="turma_stucks_list" >{{turma_data.turma_stucks_list}}</textarea>
+            </li>
+                
         </p>
     </div>
     <div class="card-footer text-muted">
@@ -82,7 +147,14 @@
     </div>
 </div>
 <br>
+<div>
+    <input type="submit" value="Salvar" class="btn btn-secondary">
+</div>
 
+
+</form>
+<p></p>
+    
 
 {% endif %}
 {% endblock %}

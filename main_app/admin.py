@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import (Content_table,Status_table,In_table,
                     Five_w_table, Totem_table, Theme_table, 
                     Principal_table,Conjunto_table, Base_table_new,
-                    Sub_base_table)
+                    Sub_base_table,Turma_table)
 
 admin.site.register(Content_table)
 
@@ -25,3 +25,5 @@ admin.site.register(Conjunto_table)
 admin.site.register(Base_table_new)
 
 admin.site.register(Sub_base_table)
+
+admin.site.register(Turma_table)

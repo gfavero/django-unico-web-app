@@ -88,3 +88,25 @@ class Sub_base_table(models.Model):
 
     def __str__(self):
         return self.content_sub_base
+
+class Turma_table(models.Model):
+    author = models.ForeignKey(User,  null=True, blank=True, on_delete=models.SET_NULL)
+    turma_name= models.CharField(max_length=255, blank=True)
+    turma_genero= models.CharField(max_length=255, blank=True)
+    turma_idade= models.CharField(max_length=255, blank=True)
+    turma_renda= models.CharField(max_length=255, blank=True)
+    turma_status= models.CharField(max_length=255, blank=True)
+    turma_o_que_querem= models.CharField(max_length=255, blank=True)
+    turma_lista_de_problemas= models.TextField( blank=True)
+    turma_em_relacao_ao_PRR= models.TextField( blank=True)
+    turma_quando= models.TextField( blank=True)
+    turma_como= models.TextField( blank=True)
+    turma_onde= models.TextField( blank=True)
+    turma_o_que= models.TextField( blank=True)
+    turma_quem= models.TextField( blank=True)
+    turma_por_que= models.TextField( blank=True)
+    turma_dreams_list= models.TextField( blank=True)
+    turma_stucks_list= models.TextField( blank=True)
+
+    def __str__(self):
+        return self.turma_name

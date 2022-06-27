@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import (Content_table, In_table, Five_w_table, Totem_table,Theme_table,
                     Principal_table,Conjunto_table,  Base_table_new,Sub_base_table,
-                    Status_table,Base_table_new,Sub_base_table)
-from .forms import ContentForm, PrincipalForm, ConjuntoForm,BaseForm,SubBaseForm
+                    Status_table,Base_table_new,Sub_base_table,Turma_table)
+from .forms import ContentForm, PrincipalForm, ConjuntoForm,BaseForm,SubBaseForm,TurmaForm
 from django.contrib import messages
 from django.contrib.auth.models import User, Group
 from datetime import date
@@ -12,8 +12,45 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def turma_content(request):
-    content = {}
-    return render(request, 'turma_content.html', content)
+    me = request.user
+    try:
+        turma_data = Turma_table.objects.filter(author=me.id)
+        turma_data_key = Turma_table.objects.get(pk=turma_data[0].id)
+    except:
+        turma_data_key = None
+    if not turma_data_key:
+        turma_table = Turma_table(turma_name = ' nome',
+                                turma_genero = '',
+                                turma_idade = '',
+                                turma_renda = '',
+                                turma_status = '',
+                                turma_o_que_querem = '',
+                                turma_lista_de_problemas = '',
+                                turma_em_relacao_ao_PRR = '',
+                                turma_quando = '',
+                                turma_como = '',
+                                turma_onde = '',
+                                turma_o_que = '',
+                                turma_quem = '',
+                                turma_por_que = '',
+                                turma_dreams_list = '',
+                                turma_stucks_list = '',
+                                author=me)
+        turma_table.save()
+
+    turma_data = Turma_table.objects.filter(author=me.id)
+    turma_data_key = Turma_table.objects.get(pk=turma_data[0].id)
+    form = TurmaForm(request.POST or None, instance= turma_data_key)
+
+    if form.is_valid() :
+        form.save()
+    context = {'turma_data': turma_data[0],
+                'form':form, }
+    return render(request, 'turma_content.html', context)
+
+# def turma_content(request):
+#     content = {}
+#     return render(request, 'turma_content.html', content)
 
 def edit_conjunto_table(request, conjunto_id):
     conjunto = Conjunto_table.objects.get(pk= conjunto_id)

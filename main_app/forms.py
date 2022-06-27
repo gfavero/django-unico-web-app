@@ -1,5 +1,5 @@
 from django import forms
-from .models import Content_table,Principal_table,Conjunto_table,Base_table_new,Sub_base_table
+from .models import Content_table,Principal_table,Conjunto_table,Base_table_new,Sub_base_table, Turma_table
 from django.contrib.auth.models import User
 from django.forms  import ModelForm
 
@@ -85,3 +85,45 @@ class SubBaseForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(SubBaseForm, self).__init__(*args, **kwargs)
         self.fields['content_sub_base'].label = 'Adicionar Sub Base'
+
+
+class TurmaForm(ModelForm):
+    class Meta:
+        model = Turma_table
+
+        fields = (  'turma_name',
+                    'turma_genero',
+                    'turma_idade',
+                    'turma_renda',
+                    'turma_status',
+                    'turma_o_que_querem',
+                    'turma_lista_de_problemas',
+                    'turma_em_relacao_ao_PRR',
+                    'turma_quando',
+                    'turma_como',
+                    'turma_onde',
+                    'turma_o_que',
+                    'turma_quem',
+                    'turma_por_que',
+                    'turma_dreams_list',
+                    'turma_stucks_list',)
+
+        widgets = {
+                    'turma_name': forms.TextInput(attrs={'class': 'form-control','placeholder' : 'turma nome'}),
+                    'turma_genero': forms.TextInput(attrs={'class': 'form-control','placeholder' : 'genero'}),
+                    'turma_idade': forms.TextInput(attrs={'class': 'form-control','placeholder' : 'idade'}),
+                    'turma_renda': forms.TextInput(attrs={'class': 'form-control','placeholder' : 'renda'}),
+                    'turma_status': forms.TextInput(attrs={'class': 'form-control','placeholder' : 'status'}),
+                    'turma_o_que_querem': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_lista_de_problemas': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_em_relacao_ao_PRR': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_quando': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_como': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_onde': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_o_que': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_quem': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_por_que': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_dreams_list': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),
+                    'turma_stucks_list': forms.TextInput(attrs={'class': 'form-control','placeholder' : ''}),                      
+
+        }
