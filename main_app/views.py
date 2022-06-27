@@ -19,7 +19,7 @@ def turma_content(request):
     except:
         turma_data_key = None
     if not turma_data_key:
-        turma_table = Turma_table(turma_name = ' nome',
+        turma_table = Turma_table(turma_name = '',
                                 turma_genero = '',
                                 turma_idade = '',
                                 turma_renda = '',
